@@ -55,16 +55,14 @@ input {
   color: #d5d4d8;
 }
 
-.char {
+.char,
+.char2 {
   display: block;
   font-family: "Inter";
   font-style: normal;
   font-weight: 100;
   font-size: 15px;
-  line-height: 28px;
   padding-left: 30px;
-  padding-top: 5px;
-
   color: #d5d4d8;
 }
 
@@ -85,16 +83,22 @@ input {
   margin-left: 30px;
 }
 
+.userchoise {
+  display: grid;
+  grid-template-columns: 200px 100px;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 #userinput {
   font-family: "Inter";
   font-style: normal;
   font-weight: 200;
   font-size: 15px;
-  width: 50px;
   display: block;
-  height: 25px;
+  height: 20px;
   text-align: center;
-  margin-left: 30px;
 }
 
 .output {
