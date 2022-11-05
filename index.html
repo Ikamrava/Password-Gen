@@ -19,23 +19,36 @@
         
         <div class="userchoise">
 
-            <label class="char" for="number">How many characters</label>
+            <label class="char" for="number">More than</label>
             <input id="userinput" type="number" />
-            <label class="char2" for="number">Numer and Symbols</label>
-            <input id="userslect" type="checkbox" value="0" />
-            
+            <label class="char3" for="number">Characters</label>
+
         </div>
         
         <button class="generatorbtn">Genrate password</button>
+
         <div class="output">
+
+        <div class="flex-container">
+        <div>
+          <label id = "pass1label" for="pass1">0</label>
           <input id="pass1" for="password1"></input>
+        </div>
+        <div>
+          <label id = "pass2label" for="pass2">0</label>
           <input id="pass2" for="password2"></input>
         </div>
+      </div>
+
         <div class="copybtns">
           <button class="copybtn1">Copy</button>
           <button class="copybtn2">Copy</button>
         </div>
+        <div id="snackbar">Copied</div>
+
+        </div>
       </div>
+      
     </article>
   </body>
   <script type="text/javascript" src="index.js"></script>
