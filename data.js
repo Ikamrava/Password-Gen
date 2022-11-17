@@ -844,4 +844,4 @@ export const words = [
   "toothpaste",
 ];
 
-export const symbols = ["?", "!", "&", "@"];
+export const symbols = ["?", "!"];

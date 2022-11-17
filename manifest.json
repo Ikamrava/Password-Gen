@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
-  "version": "1.0",
+  "version": "1.01",
   "name": "Password Generator",
-  "description": "Application that generate 3 random words for a password",
+  "description": "Generate a random password of words",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "icons": "icon.png"
   }
 }

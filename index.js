@@ -1,70 +1,48 @@
-import { numbers } from "./data.js";
-import { capitalwords } from "./data.js";
-import { words } from "./data.js";
-import { symbols } from "./data.js";
+import { numbers , words ,symbols   } from "./data.js";
+import {passGen ,copytext} from "./utils.js"
 
-let copyText1 = document.getElementById("pass1");
-let copyText2 = document.getElementById("pass2");
-const copybtn1 = document.querySelector(".copybtn1");
-const copybtn2 = document.querySelector(".copybtn2");
-let firstOutput = document.getElementById("pass1");
-let secondOutput = document.getElementById("pass2");
-let pass1label = document.getElementById("pass1label");
-let pass2label = document.getElementById("pass2label");
-const snakBar = document.getElementById("snackbar");
-let userInput = (document.getElementById("userinput").value = 16);
-const generateBtn = document.getElementById("generatorbtn");
 
-let generatedPasswordOne = "";
-let generatedPasswordTwo = "";
 
-function passGen(list) {
-  let finalPasword = "";
-  for (let i = 0; i < 1; i++) {
-    let id = Math.floor(Math.random() * list.length);
-    let randomChar = list[id];
-    finalPasword += randomChar;
-  }
-  return finalPasword;
-}
+const userInput = document.getElementById("userinput").value;
+
+
 
 function genpassword() {
-  let firstword = passGen(words);
-  let secondword = passGen(capitalwords);
-  let number = passGen(numbers);
-  let symbol = passGen(symbols);
-  let password = firstword + secondword + number + symbol;
-  while (password.length < userInput) {
-    password = passGen(words) + password;
+  let password = ""
+
+
+  for(let i = 0;i<3;i++){
+    password += passGen(words,userInput)
   }
+  password += passGen(numbers,userInput) +passGen(symbols,userInput)
+
+  if (password.length<userInput){
+    password += passGen(symbols,userInput)
+  }
+
   return password;
 }
 
-function copytext(dom) {
-  dom.select();
-  navigator.clipboard.writeText(dom.value);
-  snakBar.className = "show";
+document.addEventListener("click", function(e){
+  
+  const password1 = document.getElementById("pass1")
+  const password2 = document.getElementById("pass2")
+  
 
-  // After 3 seconds, remove the show class from DIV
-  setTimeout(function () {
-    snakBar.className = snakBar.className.replace("show", "");
-  }, 3000);
-}
+  if(e.target.id === "genBtn"){
+    password1.value = genpassword();
+    password2.value = genpassword();
+    document.getElementById("pass1label").innerHTML = password1.value.length;
+    document.getElementById("pass2label").innerHTML = password2.value.length;
 
-generateBtn.addEventListener("click", function () {
-  userInput = document.getElementById("userinput").value;
-  let password1 = genpassword();
-  let password2 = genpassword();
-  firstOutput.value = password1;
-  pass1label.innerHTML = password1.length;
-  secondOutput.value = password2;
-  pass2label.innerHTML = password2.length;
-});
+  }else if(e.target.id === "copybtn1"){
+    copytext(password1);
 
-copybtn1.addEventListener("click", function () {
-  copytext(copyText1);
-});
+  }else if (e.target.id === "copybtn2"){
+    copytext(password2);
+  
+  }
 
-copybtn2.addEventListener("click", function () {
-  copytext(copyText2);
-});
+})
+
+
